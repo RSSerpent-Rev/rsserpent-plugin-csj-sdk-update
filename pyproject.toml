@@ -40,11 +40,36 @@ exclude_lines = [
     "pragma: no cover"
 ]
 
-[tool.isort]
-balanced_wrapping = true
-combine_as_imports = true
-lines_after_imports = 2
-profile = "black"
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py310"
+exclude = [ ".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".ipynb_checkpoints", ".mypy_cache", ".nox", ".pants.d", ".pyenv", ".pytest_cache", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv", ".vscode", "__pypackages__", "_build", "buck-out", "build", "dist", "node_modules", "site-packages", "venv",]
+
+[tool.mypy]
+plugins = [ "pydantic.mypy",]
+pretty = true
+python_version = "3.10"
+show_error_codes = true
+strict = true
+[[tool.mypy.overrides]]
+module = [ "pyquery.*",]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[tool.ruff.lint]
+select = [ "E", "F", "UP", "B", "SIM", "I", "A", "C4", "DTZ", "T10", "ERA", "T20", "N", "TRY", "PGH",]
+fixable = [ "ALL",]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
 
 [tool.nitpick]
 style = "https://raw.githubusercontent.com/RSSerpent-Rev/RSSerpent/master/styles/main.toml"

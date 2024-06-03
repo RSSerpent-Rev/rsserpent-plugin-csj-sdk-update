@@ -2,7 +2,6 @@ from rsserpent_rev.models import Persona, Plugin
 
 from . import route
 
-
 plugin = Plugin(
     name="rsserpent-plugin-csj-sdk-update",
     author=Persona(
